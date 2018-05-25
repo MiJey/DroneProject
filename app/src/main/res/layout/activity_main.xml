@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/record_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="음성인식 시작"/>
+
+    <TextView
+        android:id="@+id/audio_result_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="위에 버튼 누르고 띠링 소리나면 말하고 조금 기다리면 알아서 결과 출력함" />
+
+    <TextView
+        android:id="@+id/command_result_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
