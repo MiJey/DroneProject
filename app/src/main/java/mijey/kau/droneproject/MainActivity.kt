@@ -119,10 +119,10 @@ class MainActivity : AppCompatActivity() {
                         mResult.toArray(rs)
 
                         val resultCommand: Int = textToDroneCommand(rs[0])
-                        val resultString: String = rs[0]
-                        result_text_view.text = resultString + "\n커맨드: " + resultCommand
-
                         droneCommand(resultCommand)
+
+                        val resultString: String = rs[0]
+                        result_text_view.text = "${result_text_view.text}\n${resultString}"
                     }
                 }
             })
@@ -151,10 +151,13 @@ class MainActivity : AppCompatActivity() {
     fun textToDroneCommand(text: String): Int{
         if(inGame) {
             // 뽑기 중에 인식하는 명령어들
-            if(text.contains("앞")) return 3
+            if(text.contains("끝")) return 1
+            else if(text.contains("앞")) return 3
             else if(text.contains("뒤")) return 4
             else if(text.contains("왼")) return 5
             else if(text.contains("오른")) return 6
+            else if(text.contains("위")) return 7
+            else if(text.contains("아래")) return 8
             else if(text.contains("멈")) return 9
             else if(text.contains("뽑")) return 10
         } else {
@@ -167,11 +170,14 @@ class MainActivity : AppCompatActivity() {
 
     fun droneCommand(command: Int) {
         Log.d("CommandTest", "Command: $command, dontTouch: $dontTouch")
+        result_text_view.text = "커맨드: $command"
+
         if(dontTouch) {
             Log.d("CommandTest", "dontTouch return")
             return
         }
 
+        result_text_view.text = "${result_text_view.text}\nㅇㅋ"
         isMoving = true
         when(command) {
             1 -> Network(1, ip).execute()   // finish
